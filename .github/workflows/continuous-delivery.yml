@@ -1,0 +1,55 @@
+name: Continuous Delivery
+
+on:
+  workflow_run:
+    workflows: ["Continuous Inspection"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  publish-release:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build Packaged JAR
+      run: mvn clean package -DskipTests
+
+    - name: Generate Version Tag
+      id: tag
+      run: echo "version=v1.0.${{ github.run_number }}" >> $GITHUB_OUTPUT
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.tag.outputs.version }}
+        name: Release ${{ steps.tag.outputs.version }}
+        body: |
+          ### 🚀 Automated Production Release (Tubes MKEPL)
+          Berkas berhasil dirilis secara otomatis melalui pipeline CD kelompok setelah lolos seluruh tahap kualifikasi.
+          
+          **Detail Pemeriksaan Akhir:**
+          - **Pilar 1 (CI):** Passed (Kompilasi Sukses)
+          - **Pilar 2 (CT):** Passed (Unit Testing Lolos)
+          - **Pilar 3 (Inspection):** Passed (SonarCloud Quality Gate Clean)
+          
+          *Commit SHA: ${{ github.sha }}*
+        draft: false
+        prerelease: false
+        files: target/*.jar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
