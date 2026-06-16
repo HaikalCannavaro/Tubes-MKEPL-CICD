@@ -1,34 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.book.api;
 
-/**
- *
- * @author ASUS
- */
 public class Book {
+
+    private int id;
     private String title;
     private String author;
+    private double price;
 
-    public Book(
-        String title,
-        String author
-    ){
+    public Book(int id, String title, String author, double price) {
+        this.id = id;
         this.title = title;
         this.author = author;
+        this.price = price;
     }
 
-    public String getTitle(){
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public String getAuthor(){
+    public String getAuthor() {
         return author;
     }
 
-    public String display(){
-        return title + " - " + author;
+    public double getPrice() {
+        return price;
     }
 }

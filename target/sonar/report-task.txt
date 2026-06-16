@@ -1,0 +1,7 @@
+organization=haikalcannavaro
+projectKey=HaikalCannavaro_Tubes-MKEPL-CICD
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.91183
+dashboardUrl=https://sonarcloud.io/dashboard?id=HaikalCannavaro_Tubes-MKEPL-CICD
+ceTaskId=AZ7RrXQAvz9RUgs4yfas
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ7RrXQAvz9RUgs4yfas

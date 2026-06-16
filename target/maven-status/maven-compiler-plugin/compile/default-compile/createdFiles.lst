@@ -1,2 +1,4 @@
-com\mycompany\book\api\BookAPI.class
+com\mycompany\book\api\BookService.class
 com\mycompany\book\api\Book.class
+com\mycompany\book\api\InvalidBookException.class
+com\mycompany\book\api\BookAPI.class
