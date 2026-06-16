@@ -15,8 +15,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- SonarCloud -->
-        <sonar.projectKey>book-api</sonar.projectKey>
-        <sonar.organization>nama-organization-sonar</sonar.organization>
+        <sonar.projectKey>HaikalCannavaro_Tubes-MKEPL-CICD</sonar.projectKey>
+        <sonar.organization>haikalcannavaro</sonar.organization>
     </properties>
     <dependencies>
 
