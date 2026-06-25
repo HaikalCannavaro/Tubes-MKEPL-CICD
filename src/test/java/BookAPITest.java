@@ -38,6 +38,19 @@ class BookAPITest {
                 "Java - Author | Final Price: 285000.0",
                 result);
     }
+    
+    @Test
+    void previewBook_fivePercentDiscountFailed() {
+
+        Book book = new Book(1, "Java", "Author", 300000);
+
+        String result = api.previewBook(book);
+
+        assertEquals(
+                "Java - Author | Final Price: 300000.0",
+                result);
+    }
+
 
     @Test
     void previewBook_tenPercentDiscount() {
